@@ -17,25 +17,31 @@ export default class Welcome extends Phaser.Scene {
   }
 
   create() {
-    //this.scene.start("Menu");
-
+    var centerXOffset = window.innerWidth / 2;
     const connectText = this.add
-      .bitmapText(230, 100, "nonstopFont", "", 30)
-      .setOrigin(0.5)
+      .bitmapText(240, 200, "nonstopFont", "", 30)
+      .setOrigin(0.5, 0.5)
       .setCenterAlign();
 
     const roadText = this.add
-      .bitmapText(230, 140, "nonstopFont", "", 30)
-      .setOrigin(0.5)
+      .bitmapText(240, 240, "nonstopFont", "", 30)
+      .setOrigin(0.5, 0.5)
       .setCenterAlign();
 
     const playText = this.add
-      .bitmapText(230, 500, "customFont", "", 30)
-      .setOrigin(0.5)
+      .bitmapText(240, 500, "customFont", "", 30)
+      .setOrigin(0.5, 0.5)
       .setCenterAlign()
       .setInteractive()
       .on("pointerdown", () => {
-        this.scene.start("Menu");
+        //sende user to menu scene after 1sec
+        setTimeout(() => {
+          this.scene.start("Menu");
+        }, 1000);
+      })
+      .on("pointerover", () => {
+        //set drop shadow on  hover state
+        playText.setText("Play").setDropShadow(2, 2, 0xffffff, 0.4);
       });
 
     connectText.setText("Connect");
