@@ -1,4 +1,7 @@
 const ASSET_CENTER_WIDTH = 400;
+var connectText;
+var roadText;
+var playText;
 export default class Welcome extends Phaser.Scene {
   constructor() {
     super("welcome");
@@ -22,23 +25,28 @@ export default class Welcome extends Phaser.Scene {
   create() {
     const sound = this.sound.add("sound");
     const defaultClickEffect = this.sound.add("defaultClickEffect");
-    //sound.play({ volume: 1 });
-    const connectText = this.add
+    sound.play({ volume: 1 });
+    connectText = this.add
       .bitmapText(ASSET_CENTER_WIDTH, 200, "nonstopFont", "Anchor.x = 0.5", 30)
       .setOrigin(0.5, 0.5)
-      .setCenterAlign();
+      .setCenterAlign()
+      .setX(100);
 
-    const roadText = this.add
+    //.setVisible(false);
+
+    roadText = this.add
       .bitmapText(ASSET_CENTER_WIDTH, 240, "nonstopFont", "Anchor.x = 0.5", 30)
       .setOrigin(0.5, 0.5)
-      .setCenterAlign();
+      .setCenterAlign()
+      .setX(800);
 
     //  shape to handle the button hit area zone
     var shape = new Phaser.Geom.Circle(46, 45, 45);
-    const playText = this.add
-      .bitmapText(ASSET_CENTER_WIDTH, 500, "customFont", "Anchor.x = 0.5", 30)
+    playText = this.add
+      .bitmapText(ASSET_CENTER_WIDTH, 600, "customFont", "Anchor.x = 0.5", 30)
       .setOrigin(0.5, 0.5)
       .setCenterAlign()
+      .setY(900)
       .setInteractive(shape, Phaser.Geom.Circle.Contains, {
         useHandCursor: true,
       });
@@ -46,6 +54,13 @@ export default class Welcome extends Phaser.Scene {
     connectText.setText("Connect");
     roadText.setText("Road");
     playText.setText("Play");
+
+    var timedEvent = this.time.addEvent({
+      delay: 500,
+      callback: onEvent,
+      callbackScope: this,
+      loop: true,
+    });
 
     // input click callbacks
     playText
@@ -61,4 +76,15 @@ export default class Welcome extends Phaser.Scene {
         playText.setText("Play").setDropShadow(2, 2, 0xffffff, 0.4);
       });
   }
+}
+
+//simple loop animation just loading the text on the scene
+var loop;
+var reverseLoop;
+function onEvent() {
+  loop = connectText.x * 2;
+  reverseLoop = roadText.x / 2;
+  connectText.x = loop < ASSET_CENTER_WIDTH ? loop : 400;
+  roadText.x = reverseLoop > ASSET_CENTER_WIDTH ? reverseLoop : 400;
+  playText.y = reverseLoop > 600 ? reverseLoop : 600;
 }
