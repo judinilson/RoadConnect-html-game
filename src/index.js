@@ -6,9 +6,11 @@ import Game from "./scenes/Game";
 const config = {
   type: Phaser.AUTO,
   scale: {
+    mode: Phaser.Scale.CENTER_HORIZONTALLY,
+    parent: "phaser-example",
     autoCenter: Phaser.Scale.CENTER_BOTH,
-    width: window.innerWidth < 480 ? 480 : window.innerWidth,
-    height: window.innerHeight - 32 < 320 ? 320 : window.innerHeight,
+    width: 800,
+    height: 800,
   },
   backgroundColor: "#23BF8E",
   scene: [Welcome, Menu, Game],

@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 export class LevelChoiceButton extends Phaser.GameObjects.Text {
-  constructor(scene, x, y, text) {
-    super(scene, x, y);
+  constructor(scene, x, y, text, callback) {
+    super(scene, x, y, text);
 
     var container = scene.add.container(x, y).setDepth(1);
     var levelBg = scene.add.sprite(0, 0, "levelButtonBg");
@@ -12,6 +12,17 @@ export class LevelChoiceButton extends Phaser.GameObjects.Text {
     container.add(levelBg);
     container.add(levelText);
     scene.add.existing(this);
-    // this.setInteractive({ useHandCursor: true });
+
+    //  shape to handle the button hit area zone
+    var shape = new Phaser.Geom.Circle(0, 0, 45);
+    this.setInteractive(shape, Phaser.Geom.Circle.Contains, {
+      useHandCursor: true,
+    }).on("pointerdown", () => {
+      //this.enterButtonHoverState()
+      const defaultClickEffect = scene.sound.add("defaultClickEffect");
+      defaultClickEffect.play();
+
+      callback();
+    });
   }
 }
