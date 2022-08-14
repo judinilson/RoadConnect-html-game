@@ -51,7 +51,7 @@ export default class Game extends Phaser.Scene {
     );
   }
   create() {
-    const defaultClickEffect = scene.sound.add("defaultClickEffect");
+    //const defaultClickEffect = this.sound.add("defaultClickEffect");
 
     // this.add.image(350, 300, "roadTexture2").setScale(0.5);
 
@@ -88,33 +88,53 @@ export default class Game extends Phaser.Scene {
 
   prepareBoard() {
     var shuffleRoads = createShuffledIndexArray(2);
-
-    var roadGroup = this.add.container();
+    const offset = 90;
+    var roadContainer = this.add.container();
     var roadIndex = 0,
       newRoad;
     for (let i = 0; i < BOARD_ROWS; i++) {
       for (let j = 0; j < BOARD_COLS; j++) {
         if (i < 2 && j < 2) {
-          roadGroup.addAt(
-            this.add.image(j * ROAD_WIDTH, i * ROAD_HEIGHT, "roadTexture2"),
-            roadIndex
-          );
-          roadGroup.each((e) => {
-            e.setInteractive(
-              new Phaser.Geom.Circle(45, 45, 46),
-              Phaser.Geom.Circle.Contains
-            );
-            e.on("pointerdown", () => {
-              e.rotation += 5;
-            });
-          });
+          var road = this.add
+            .image(j * 80, i * 80, "roadTexture2")
+            .setScale(0.8);
+          road.name = "road" + i.toString() + "x" + j.toString();
+          road.tabIndex = roadIndex;
+          if (i == 0 && j == 0) {
+            road.angle = 90;
+            road.tabIndex = 0; //notice that i use tabIndex just to past the destination index for game over
+          }
+          if (i == 0 && j == 1) {
+            road.angle = 0;
+            road.tabIndex = 90;
+          }
+          if (i == 1 && j == 0) {
+            road.angle = -180;
+            road.tabIndex = -90;
+          }
+          if (i == 1 && j == 1) {
+            road.angle = -90;
+            road.tabIndex = -180;
+          }
+
+          console.log(`${road}:`, road);
+
+          roadContainer.add(road);
 
           roadIndex++;
         }
       }
     }
-    this.add.container(300, 300, roadGroup);
-    console.log(roadGroup);
+    roadContainer.each((e) => {
+      const shape = new Phaser.Geom.Circle(50, 50, 50);
+      e.setInteractive(shape, Phaser.Geom.Circle.Contains, {
+        useHandCursor: true,
+      }).on("pointerup", () => {
+        e.angle += offset;
+        checkIfFinished(roadContainer);
+      });
+    });
+    this.add.container(350, 300, roadContainer);
   }
 }
 function createShuffledIndexArray(piecesAmount) {
@@ -145,6 +165,16 @@ function shuffle(array) {
   return array;
 }
 
-const rotate = (road) => {
-  road.rotation += 1;
-};
+function checkIfFinished(container) {
+  var isFinished = true;
+  container.each((e) => {
+    if (e.angle !== e.tabIndex) {
+      isFinished = false;
+      return;
+    }
+  });
+
+  if (isFinished) {
+    console.log("congratulation you done it");
+  }
+}
