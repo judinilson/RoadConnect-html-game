@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import Welcome from "./scenes/Welcome";
 import Menu from "./scenes/Menu";
 import Game from "./scenes/Game";
+import GameOver from "./scenes/GameOver";
 
 const config = {
   type: Phaser.AUTO,
@@ -13,7 +14,7 @@ const config = {
     height: 800,
   },
   backgroundColor: "#23BF8E",
-  scene: [Game],
+  scene: [Game, GameOver],
 };
 
 const game = new Phaser.Game(config);
