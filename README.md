@@ -8,6 +8,10 @@ This simple project was built using html with Phaser 3, it is a simple and chall
 
 ![project gif](/assets/gameplay.gif)
 
+## Game demo
+
+[demo](https://judinilson.github.io/RoadConnect-html-game/)
+
 ## Requirements
 
 [Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
