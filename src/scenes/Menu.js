@@ -18,17 +18,10 @@ export default class Menu extends Phaser.Scene {
 
     var levelOne = new LevelChoiceButton(this, 250, 180, "1", () => {
       this.scene.start("Game");
-      console.log("Iam in first level");
     });
-    var levelTwo = new LevelChoiceButton(this, 350, 180, "2", () => {
-      console.log("Iam in second level");
-    });
-    var levelThree = new LevelChoiceButton(this, 450, 180, "3", () => {
-      console.log("Iam in third level");
-    });
-    var levelFour = new LevelChoiceButton(this, 550, 180, "4", () => {
-      console.log("Iam in last level");
-    });
+    var levelTwo = new LevelChoiceButton(this, 350, 180, "2", () => {});
+    var levelThree = new LevelChoiceButton(this, 450, 180, "3", () => {});
+    var levelFour = new LevelChoiceButton(this, 550, 180, "4", () => {});
 
     //the blue background rectangle
     this.add.rectangle(400, 400, 400, 550, 0x4fd3c4);

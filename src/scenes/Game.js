@@ -50,7 +50,7 @@ export default class Game extends Phaser.Scene {
     );
   }
   create() {
-    //const defaultClickEffect = this.sound.add("defaultClickEffect");
+    const defaultClickEffect = this.sound.add("defaultClickEffect");
 
     this.prepareBoard();
 
@@ -83,7 +83,7 @@ export default class Game extends Phaser.Scene {
     var roadContainer = this.add.container();
     var roadIndex = 0;
 
-    var road;
+    var road, roadTwo, roadThree;
     for (let i = 0; i < BOARD_ROWS; i++) {
       for (let j = 0; j < BOARD_COLS; j++) {
         if (i < 2 && j < 2) {

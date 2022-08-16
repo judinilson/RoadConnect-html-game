@@ -25,7 +25,7 @@ export default class Welcome extends Phaser.Scene {
   create() {
     const sound = this.sound.add("sound");
     const defaultClickEffect = this.sound.add("defaultClickEffect");
-    //sound.play({ volume: 1 });
+    sound.play({ volume: 1 });
     connectText = this.add
       .bitmapText(ASSET_CENTER_WIDTH, 200, "nonstopFont", "Anchor.x = 0.5", 30)
       .setOrigin(0.5, 0.5)

@@ -1,4 +1,12 @@
-# Road Connect Html Game
+## ROAD CONNECT HTML GAME
+
+## Poject Description
+
+This simple project was built using html with Phaser 3, it is a simple and challenging game project where players need to connect roads in every level of the game.
+
+## Poject
+
+[screenshot](/assets/gameplay.gif)
 
 ## Requirements
 
@@ -18,26 +26,22 @@ After cloning the repo, run `npm install` from your project directory. Then, you
 
 After starting the development server with `npm start`, you can edit any files in the `src` folder and webpack will automatically recompile and reload your server (available at `http://localhost:8080` by default).
 
-## Customizing the Template
+## Customizing the Project
 
-### Babel
+I sincerely think that there's a better way to customize this project algorithm. Starting with the most important part **displaying the game levels dynamically**.
+Reason behind the project having only one level it's because I do not wanna repeat myself by rendering the game levels manualy,**having to setup each spritesheet position and angle in each level**, tried to improve the algorithm but was encountered with some limitations using Phaser.
+Any suggestions and contributions are welcome, base on the issues mentioned bellow.
 
-You can write modern ES6+ JavaScript and Babel will transpile it to a version of JavaScript that you want your project to support. The targeted browsers are set in the `.babelrc` file and the default currently targets all browsers with total usage over "0.25%" but excludes IE11 and Opera Mini.
+## ISSUES
 
-```
-"browsers": [
- ">0.25%",
- "not ie 11",
- "not op_mini all"
-]
-```
+1. Phaser spritesheet display correct size.
+2. Error rendering image dynamically using custom class
+3. Add image to the scene "now its rendering manualy because have to setup each image position and angle"
 
-### Webpack
+### TODO
 
-If you want to customize your build, such as adding a new webpack loader or plugin (i.e. for loading CSS or fonts), you can modify the `webpack/base.js` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json'.
+- Create reusable methods to render each level of the game.
+- Create Phaser custom image object class to render each road.
+- Render each level dynamically with correct positioning and angles.
 
-## Deploying Code
-
-After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets you project depended.
-
-If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), you should be able to open `http://mycoolserver.com/index.html` and play your game.
+check the project tab in this repo for more information.
