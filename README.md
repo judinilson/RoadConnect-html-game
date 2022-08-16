@@ -6,7 +6,7 @@ This simple project was built using html with Phaser 3, it is a simple and chall
 
 ## Poject
 
-[screenshot](/assets/gameplay.gif)
+![project gif](/assets/gameplay.gif)
 
 ## Requirements
 
