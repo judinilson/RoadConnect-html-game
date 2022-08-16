@@ -12,41 +12,41 @@ export default class Game extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet("roadTexture1", "assets/roadTexture_01.png", {
+    this.load.spritesheet("roadTexture1", "/src/assets/roadTexture_01.png", {
       frameWidth: ROAD_WIDTH,
       frameHeight: ROAD_HEIGHT,
     });
-    this.load.spritesheet("roadTexture2", "assets/roadTexture_02.png", {
+    this.load.spritesheet("roadTexture2", "/src/assets/roadTexture_02.png", {
       frameWidth: ROAD_WIDTH,
       frameHeight: ROAD_HEIGHT,
     });
-    this.load.spritesheet("roadTexture3", "assets/roadTexture_03.png", {
+    this.load.spritesheet("roadTexture3", "/src/assets/roadTexture_03.png", {
       frameWidth: ROAD_WIDTH,
       frameHeight: ROAD_HEIGHT,
     });
-    this.load.spritesheet("roadTexture4", "assets/roadTexture_04.png", {
+    this.load.spritesheet("roadTexture4", "/src/assets/roadTexture_04.png", {
       frameWidth: ROAD_WIDTH,
       frameHeight: ROAD_HEIGHT,
     });
-    this.load.spritesheet("roadTexture5", "assets/roadTexture_05.png", {
+    this.load.spritesheet("roadTexture5", "/src/assets/roadTexture_05.png", {
       frameWidth: ROAD_WIDTH,
       frameHeight: ROAD_HEIGHT,
     });
-    this.load.spritesheet("roadTexture6", "assets/roadTexture_06.png", {
+    this.load.spritesheet("roadTexture6", "/src/assets/roadTexture_06.png", {
       frameWidth: ROAD_WIDTH,
       frameHeight: ROAD_HEIGHT,
     });
-    this.load.spritesheet("roadTexture7", "assets/roadTexture_07.png", {
+    this.load.spritesheet("roadTexture7", "/src/assets/roadTexture_07.png", {
       frameWidth: ROAD_WIDTH,
       frameHeight: ROAD_HEIGHT,
     });
-    this.load.image("menuIcon", "assets/barsHorizontal.png");
+    this.load.image("menuIcon", "/src/assets/barsHorizontal.png");
 
     // delete before deploy
     this.load.bitmapFont(
       "customFont",
-      "assets/fonts/a2203.png",
-      "assets/fonts/a2203.xml"
+      "/src/assets/fonts/a2203.png",
+      "/src/assets/fonts/a2203.xml"
     );
   }
   create() {

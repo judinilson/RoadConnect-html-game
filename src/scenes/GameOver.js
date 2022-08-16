@@ -4,6 +4,8 @@ export default class GameOver extends Phaser.Scene {
   }
 
   create() {
+    const defaultClickEffect = this.sound.add("defaultClickEffect");
+
     var shape = new Phaser.Geom.Circle(46, 45, 45);
     this.add
       .bitmapText(400, 300, "customFont", "", 25)

@@ -6,7 +6,7 @@ export default class Menu extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("levelButtonBg", "assets/red_button09.png");
+    this.load.image("levelButtonBg", "/src/assets/red_button09.png");
   }
   create() {
     //this.scene.start("Game");
