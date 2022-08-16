@@ -8,20 +8,17 @@ export default class Welcome extends Phaser.Scene {
   }
 
   preload() {
-    this.load.audio("sound", "/src/assets/audio/Funky_Chill_loop.wav");
-    this.load.audio(
-      "defaultClickEffect",
-      "/src/assets/audio/SFX/DefaultClick.mp3"
-    );
+    this.load.audio("sound", "assets/audio/Funky_Chill_loop.wav");
+    this.load.audio("defaultClickEffect", "assets/audio/SFX/DefaultClick.mp3");
     this.load.bitmapFont(
       "nonstopFont",
-      "/src/assets/fonts/nonstopfont.png",
-      "/src/assets/fonts/nonstopfont.xml"
+      "assets/fonts/nonstopfont.png",
+      "assets/fonts/nonstopfont.xml"
     );
     this.load.bitmapFont(
       "customFont",
-      "/src/assets/fonts/a2203.png",
-      "/src/assets/fonts/a2203.xml"
+      "assets/fonts/a2203.png",
+      "assets/fonts/a2203.xml"
     );
   }
 
